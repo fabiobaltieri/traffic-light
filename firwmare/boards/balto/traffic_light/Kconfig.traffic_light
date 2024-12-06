@@ -1,0 +1,2 @@
+config BOARD_TRAFFIC_LIGHT
+	select SOC_ESP32C3_FN4

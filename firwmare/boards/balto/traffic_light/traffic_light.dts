@@ -1,0 +1,81 @@
+/dts-v1/;
+
+#include <espressif/esp32c3/esp32c3_fx4.dtsi>
+#include "traffic_light-pinctrl.dtsi"
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <espressif/partitions_0x0_default.dtsi>
+#include <zephyr/dt-bindings/pwm/pwm.h>
+
+/ {
+	model = "Traffic light";
+	compatible = "balto,traffic-light";
+
+	chosen {
+		zephyr,sram = &sram1;
+		zephyr,console = &usb_serial;
+		zephyr,shell-uart = &usb_serial;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+		zephyr,bt-hci = &esp32_bt_hci;
+	};
+
+	pwmleds {
+		compatible = "pwm-leds";
+
+		led_red: led_red {
+			pwms = <&ledc0 0 PWM_HZ(250) PWM_POLARITY_NORMAL>;
+		};
+		led_yellow: led_yellow {
+			pwms = <&ledc0 1 PWM_HZ(250) PWM_POLARITY_NORMAL>;
+		};
+		led_green: led_green {
+			pwms = <&ledc0 2 PWM_HZ(250) PWM_POLARITY_NORMAL>;
+		};
+	};
+};
+
+&usb_serial {
+	status = "okay";
+};
+
+&trng0 {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&wdt0 {
+	status = "okay";
+};
+
+&wifi {
+	status = "okay";
+};
+
+&esp32_bt_hci {
+	status = "okay";
+};
+
+&ledc0 {
+	pinctrl-0 = <&ledc0_default>;
+	pinctrl-names = "default";
+	status = "okay";
+
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel0@0 {
+		reg = <0x0>;
+		timer = <0>;
+	};
+	channel1@1 {
+		reg = <0x1>;
+		timer = <1>;
+	};
+	channel2@2 {
+		reg = <0x2>;
+		timer = <2>;
+	};
+};

@@ -1,0 +1,14 @@
+#include <zephyr/dt-bindings/pinctrl/esp-pinctrl-common.h>
+#include <dt-bindings/pinctrl/esp32c3-pinctrl.h>
+#include <zephyr/dt-bindings/pinctrl/esp32c3-gpio-sigmap.h>
+
+&pinctrl {
+	ledc0_default: ledc0_default {
+		group1 {
+			pinmux = <LEDC_CH0_GPIO4>,
+				 <LEDC_CH1_GPIO10>,
+				 <LEDC_CH2_GPIO8>;
+			output-enable;
+		};
+	};
+};

@@ -1,0 +1,5 @@
+board:
+  name: traffic_light
+  vendor: balto
+  socs:
+  - name: esp32c3
