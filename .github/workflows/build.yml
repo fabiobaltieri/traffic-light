@@ -24,6 +24,17 @@ jobs:
           app-path: firmware
           toolchains: riscv64-zephyr-elf
 
+      - name: Set a timestamp variable
+        shell: bash
+        run: |
+          echo "ESP_SHA=$(west list -f '{revision}' hal_espressif)" >> $GITHUB_ENV
+
+      - name: Cache blobs
+        uses: actions/cache@v4
+        with:
+          path: modules/hal/espressif/zephyr/blobs
+          key: ccache-esp-blobs-${{ env.ESP_SHA }}
+
       - name: Fetch the blobs
         run: |
           west blobs fetch -a
