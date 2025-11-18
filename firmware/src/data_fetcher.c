@@ -1,6 +1,9 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/net/http/client.h>
 #include <zephyr/net/socket.h>
+#include <zephyr/posix/netdb.h>
+#include <zephyr/posix/sys/socket.h>
+#include <zephyr/posix/unistd.h>
 
 LOG_MODULE_REGISTER(data_fetcher, LOG_LEVEL_INF);
 
