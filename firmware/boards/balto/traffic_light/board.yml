@@ -1,5 +1,6 @@
 board:
   name: traffic_light
+  full_name: Traffic light
   vendor: balto
   socs:
   - name: esp32c3
