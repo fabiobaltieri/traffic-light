@@ -11,3 +11,4 @@ manifest:
         name-allowlist:
           - hal_espressif
           - mbedtls
+          - tf-psa-crypto
