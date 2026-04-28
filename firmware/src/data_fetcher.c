@@ -63,7 +63,7 @@ int fetch_data(uint8_t *data, int data_size, int *data_len)
 		in->sin_addr.s4_addr[2],
 		in->sin_addr.s4_addr[3]);
 
-	sock = socket(res->ai_family, res->ai_socktype, IPPROTO_TLS_1_3);
+	sock = socket(res->ai_family, res->ai_socktype, IPPROTO_TLS_1_2);
 	if (sock < 0) {
 		LOG_ERR("socket error: %d", sock);
 		return sock;
