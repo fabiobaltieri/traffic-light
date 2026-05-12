@@ -10,5 +10,6 @@ manifest:
       import:
         name-allowlist:
           - hal_espressif
+          - hostap
           - mbedtls
           - tf-psa-crypto
